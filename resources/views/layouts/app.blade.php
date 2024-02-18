@@ -40,48 +40,43 @@
                         <div class="nk-sidebar-menu" data-simplebar>
                             <ul class="nk-menu">
   <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">Testing</h6>
+                                    <h6 class="overline-title text-primary-alt">Menu</h6>
                                 </li><!-- .nk-menu-heading -->
+                                @can('kontrak')
                                  <li class="nk-menu-item">
                                     <a href="{{ route('kontrak.index') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
                                         <span class="nk-menu-text">Data Kontrak</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-heading">
-                                    <h6 class="overline-title text-primary-alt">Data Master</h6>
-                                </li><!-- .nk-menu-heading -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="" class="nk-menu-link nk-menu-toggle">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb-fill"></em></span>
-                                        <span class="nk-menu-text">Manajemen Pengguna</span>
+                                  @endcan
+                                  @can('jadwalkerja')
+
+
+                                                                 <li class="nk-menu-item">
+                                    <a href="{{ route('jadwal.index') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
+                                        <span class="nk-menu-text">Jadwal Kerja</span>
                                     </a>
-                                    <ul class="nk-menu-sub">
-                                        <li class="nk-menu-item">
-                                            <a href="{{ route('users.index') }}" class="nk-menu-link"><span class="nk-menu-text">Manajemen Pengguna</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="{{ route('roles.index') }}" class="nk-menu-link"><span class="nk-menu-text">Role</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="{{ route('roles.index') }}" class="nk-menu-link"><span class="nk-menu-text">Hak Akses</span></a>
-                                        </li>
-                                    </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-user-list-fill"></em></span>
-                                        <span class="nk-menu-text">Customers</span><span class="nk-menu-badge">New</span>
+                                </li>
+                                  @endcan
+                                  @can('catatankerja')
+<li class="nk-menu-item">
+                                    <a href="{{ route('catatan.index') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
+                                        <span class="nk-menu-text">catatan Kerja</span>
                                     </a>
-                                    <ul class="nk-menu-sub">
-                                        <li class="nk-menu-item">
-                                            <a href="html/customer-list.html" class="nk-menu-link"><span class="nk-menu-text">Customer List</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/customer-details.html" class="nk-menu-link"><span class="nk-menu-text">Customer Details</span></a>
-                                        </li>
-                                    </ul><!-- .nk-menu-sub -->
-                                </li><!-- .nk-menu-item -->
+                                </li>
+                                  @endcan
+@can('kontrak')
+<li class="nk-menu-item">
+                                    <a href="{{ route('laporan.index') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-cart-fill"></em></span>
+                                        <span class="nk-menu-text">Laporan</span>
+                                    </a>
+                                </li>
+@endcan
+
 
 
                             </ul><!-- .nk-menu -->
@@ -150,7 +145,7 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-unverified">Unverified</div>
+                                                    <div class="user-status user-status-unverified">Verified</div>
                                                     <div class="user-name dropdown-indicator">Welcome, {{ Auth::user()->name }}</div>
                                                 </div>
                                             </div>
@@ -163,18 +158,11 @@
                                                     </div>
                                                     <div class="user-info">
                                                         <span class="lead-text"> {{ Auth::user()->name }}</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="sub-text"> {{ Auth::user()->email }}</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li><a href="html/user-profile-regular.html"><em class="icon ni ni-user-alt"></em><span>View Profi23le</span></a></li>
-                                                    <li><a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a></li>
-                                                    <li><a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a></li>
-                                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Dark Mode</span></a></li>
-                                                </ul>
-                                            </div>
+
                                             <div class="dropdown-inner">
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
